@@ -80,6 +80,28 @@ nav h1 {
     height: 100%;
     width: 100%;
     background-color: #111111ee;
+    display:flex;
+    /*align-items: center;*/
+    justify-content: center;
+    color: var(--dice-font);
+    padding-top: 10vh;
+}
+
+.user-input{
+    display: flex;
+    flex-direction: column;
+    color: var(--dice-font);
+}
+
+.user-input input{
+    margin-bottom: 8px;
+}
+.button-cancel-x{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.button-cancel-x:hover{
+    color: var(--nav-hover);
 }
 
 @media screen and (max-width: 350px){
