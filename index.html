@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/index.css">
 
-    <title>Document</title>
+    <title>Dice Bag - Your friendly neighborhood Pathfinder assistant</title>
 </head>
 <body>
     <nav>
@@ -21,7 +21,7 @@
             </div>
             <div class="nav-menu">
                 <ul class = "nav-menu-items">
-                    <li id="buttonCreateDice">Create New Dice</li>
+                    <li id="buttonCreateDiceMenu">Create New Dice</li>
                 </ul>
             </div>
         </div>
@@ -110,7 +110,21 @@
         </div><!-- End DICEDECK-->
     </section>
     <div id="curtain" class="curtain hidden">
-        <div class="create-wrapper"></div>
+        <div class="create-wrapper">
+            <div class="text-right"><span id="buttonCancelDiceMenu" class="button-cancel-x">&#x1f5d9;</span></div>
+            <div class="text-center title mb-16"><span>Create New Dice</span></div>
+            <div class = "user-input">
+                <label for="inputName">Dice Name:</label>
+                    <input id="inputName" class="input-number" type="text" >
+                <label for="inputRolls">Number of times Rolled:</label>
+                    <input id="inputRolls" class="input-number" type="number">
+                <label for="inputSides">Number of sides on dice:</label>
+                    <input id="inputSides" class="input-number" type="number">
+                <label for="inputBonus">Bonus to roll:</label>
+                    <input id="inputBonus" class="input-number" type="number">
+                <button id="buttonNewDiceSubmit">Submit</button>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript" src="assets/javascript/index.js"></script>
