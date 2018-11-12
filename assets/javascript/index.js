@@ -1,9 +1,15 @@
-var diceArray = [];
 
+//initilizing diceArray, checking Local Storage for savedDice.
+var diceArray = JSON.parse(localStorage.getItem('savedDice'));
+ 
+if (diceArray === null) {
+    diceArray = [];
+} else{
+    renderDice();
+}
 
 //Button Listeners
 document.getElementById("buttonCreateDiceMenu").addEventListener('click', function(event){
-    console.log ('button: createDice touched');
     document.getElementById("curtain").classList.toggle('hidden');
 });
 
@@ -14,7 +20,6 @@ document.getElementById("buttonNewDiceSubmit").addEventListener('click', functio
     var inputSides = document.getElementById('inputSides').value;
     var inputBonus = document.getElementById('inputBonus').value;
 
-    console.log (inputName, inputRolls, inputSides, inputBonus);
     newDice = {
         name:inputName, 
         rolls:inputRolls, 
@@ -22,11 +27,13 @@ document.getElementById("buttonNewDiceSubmit").addEventListener('click', functio
         bonus:inputBonus
     }
 
+    //adding the new dice to my array, and then pushing the full updated array to local storage.
     diceArray.push(newDice);
-    console.log(diceArray);
+    localStorage.clear; //ensureing local storage only contains the new array
+    localStorage.savedDice = JSON.stringify(diceArray);
 
+    //close menu and render dice on screen
     clearDiceCreateMenu();
-
     renderDice();
 });
 
@@ -41,7 +48,6 @@ function renderDice(){
     document.getElementById('diceDeck').innerHTML = "";
 
     for(var i = 0; i<diceArray.length; i++){
-        console.log(diceArray[i]);
 
         //named variables for ease of reading code.
         var name = diceArray[i].name;
@@ -50,7 +56,7 @@ function renderDice(){
         var bonus = diceArray[i].bonus;
         var diceID = i;
 
-        console.log(name, rolls, sides, bonus)
+        // console.log(name, rolls, sides, bonus);
 
         //constructing new elements to be appended to diceDeck
         var newDiceCard = document.createElement('div');
@@ -71,8 +77,16 @@ function renderDice(){
         newValuesSpan.classList = "dice-values";
         newValuesSpan.textContent = "" + rolls + "d" + sides + "+" + bonus;
 
+        //creating hidden Dice Elements for other features.
+        var newEditScreen = document.createElement('div');
+        newEditScreen.classList = "dice-edit-screen hidden";
+        var newDeleteButton = document.createElement('div');
+        newDeleteButton.classList = "button-delete-dice";
+        newDeleteButton.textContent = "X";
+
         //assembaling dice
-        newDiceFace.append(newResultSpan);
+        newEditScreen.append(newDeleteButton);
+        newDiceFace.append(newResultSpan, newEditScreen);
         newNameDiv.append(newNameSpan);
         newValuesDiv.append(newValuesSpan);
         newDiceText.append(newNameDiv, newValuesDiv);
@@ -80,16 +94,15 @@ function renderDice(){
 
         //attaching metadata to diceFace
         newDiceFace.id = diceID;
+        newDeleteButton.setAttribute("data-id", i);
 
-        //TODO: trying to just make array calls. so that the objects are much easier to use than constantly adding more and more meta data.
-        // newDiceCard.setAttribute("data-name", name);
-        // newDiceCard.setAttribute("data-rolls", rolls);
-        // newDiceCard.setAttribute("data-sides", sides);
-        // newDiceCard.setAttribute("data-bonus", bonus);
-
-        //giving the dice a listener
+        //giving the dice a listeners
         newDiceFace.addEventListener('click', function(event){
             roller(this.id);
+        });
+        newDeleteButton.addEventListener('click', function(event){
+            console.log (this.dataset.id);
+            removeDice(this.dataset.id);
         });
 
         //adding to deck
@@ -105,6 +118,9 @@ function clearDiceCreateMenu(){
     document.getElementById('inputRolls').value = "";
     document.getElementById('inputSides').value = "";
     document.getElementById('inputBonus').value = "";
+}
+function deleteDiceMenu(){
+    //TODO: show the button to delete dice.
 }
 
 function roller(key){
@@ -129,4 +145,10 @@ function roller(key){
     console.log ("Total Rolled: " + totalRolled);
     console.log ("with bonus: "+ withBonus);
     document.getElementById(key).textContent = withBonus;
+}
+
+function removeDice(id){
+    console.log("remove: " + id);
+    diceArray.splice(id,1);
+    renderDice();
 }

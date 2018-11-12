@@ -59,6 +59,7 @@ nav h1 {
     overflow: hidden;
 }
 .dice-face{
+    position: relative;
     background-color: var(--dice-face);
     color: var(--dice-font);
     width: 100%;
@@ -104,6 +105,17 @@ nav h1 {
 }
 .button-cancel-x:hover{
     color: var(--nav-hover);
+}
+
+
+.dice-edit-screen {
+    position: absolute;
+    top: 0;
+
+    height: 100%;
+    width: 100%;
+    background-color: #111111ee;
+    color: red;
 }
 
 @media screen and (max-width: 350px){
