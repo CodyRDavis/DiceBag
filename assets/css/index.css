@@ -15,6 +15,7 @@ body{
     background-color: var(--app-bg);
 }
 
+/*NAVBAR STYLES *******************************************************************************/
 nav{
     background-color: var(--nav-primary);
     overflow: auto;
@@ -22,7 +23,6 @@ nav{
 }
 .nav-wrapper{
     width: 80vw;
-    /*min-width: 350px;*/
     margin: auto;
     display: flex;
     overflow: hidden;
@@ -36,6 +36,7 @@ nav{
     list-style-type: none;
     cursor: pointer;
     font-size: 1.1rem;
+    margin-left: 8px;
 }
 .nav-menu-items li:hover{
     color: var(--nav-hover);
@@ -45,6 +46,7 @@ nav h1 {
     margin: 8px;
 }
 
+/* DICE STYLES ****************************************************************************/
 .dice-deck{
     width: 100%;
     padding: 8px;
@@ -74,6 +76,7 @@ nav h1 {
     text-align: center;
 }
 
+/*Dice Creation Styles **************************************************************************/
 .curtain {
     position: fixed;
     top: 0;
@@ -108,17 +111,8 @@ nav h1 {
 }
 
 
-.dice-edit-screen {
-    position: absolute;
-    top: 0;
-
-    height: 100%;
-    width: 100%;
-    background-color: #111111ee;
-    color: red;
-}
-
-@media screen and (max-width: 350px){
+/* MEDIA QUERY ********************************************************************************/
+@media screen and (max-width: 400px){
     .nav-wrapper{
         flex-direction: column;
     }
@@ -141,7 +135,7 @@ nav h1 {
     }
 }
 
-@media screen and (max-width: 200px){
+@media screen and (max-width: 210px){
     html, body, .dice-deck, .nav-wrapper{
         min-width: 200px;
     }
