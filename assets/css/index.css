@@ -179,7 +179,7 @@ nav h1 {
     }
 }
 
-@media screen and (max-width: 250px){
+@media screen and (max-width: 275px){
 
     .dice-deck{
         flex-direction: column;
