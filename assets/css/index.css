@@ -20,6 +20,7 @@ nav{
     background-color: var(--nav-primary);
     overflow: auto;
     color: var(--nav-accent, white);
+    border-bottom: 2px solid var(--nav-hover);
 }
 .nav-wrapper{
     width: 80vw;
@@ -36,7 +37,7 @@ nav{
     list-style-type: none;
     cursor: pointer;
     font-size: 1.1rem;
-    margin-left: 8px;
+    margin-left: 16px;
 }
 .nav-menu-items li:hover{
     color: var(--nav-hover);
@@ -44,6 +45,37 @@ nav{
 nav h1 {
     font-size: 2rem;
     margin: 8px;
+}
+
+.slide-menu{
+    height: 100%;
+    width: 200px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--nav-primary);
+    color: var(--nav-accent);
+    transition-duration: .5s;
+}
+.slide-menu ul {
+    overflow: hidden;
+}
+.slide-menu li{
+    font-size: 1.1rem;
+    list-style: none;
+    margin: 16px;
+    border-bottom: 1px solid #11111155;
+    cursor: pointer;
+}
+.slide-menu li:hover{
+    color: var(--nav-hover);
+}
+
+.slide-hide{
+    right: -200px;
+    overflow: hidden;
+    transition-duration: 0.5s;
+    word-wrap: none;
 }
 
 /* DICE STYLES ****************************************************************************/
@@ -110,6 +142,29 @@ nav h1 {
     color: var(--nav-hover);
 }
 
+/* Special Event Banner Style *****************************************************************/
+.special-banner {
+    position: fixed;
+    top: 0vh;
+    left: 0;
+    right: 0;
+
+    width: 80vw;
+
+    border-radius: 10px;
+    background-color: var(--dice-face);
+    font-size: 1.1rem;
+    color: var(--dice-font);
+    margin: 8px auto;
+    padding: 16px;
+
+}
+.close-specialbanner{
+    cursor: pointer;
+}
+.close-specialbanner:hover{
+    color: var(--nav-hover);
+}
 
 /* MEDIA QUERY ********************************************************************************/
 @media screen and (max-width: 400px){

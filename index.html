@@ -14,7 +14,7 @@
     <title>Dice Bag - Your friendly neighborhood Pathfinder assistant</title>
 </head>
 <body>
-    <nav>
+    <nav id="nav">
         <div class="nav-wrapper">
             <div class="logo-wrapper">
                 <h1>Dice Bag</h1>
@@ -28,6 +28,13 @@
         </div>
     </nav>
     <section>
+        <div id="slideMenu" class = "slide-menu slide-hide">
+            <ul>
+                <li id="buttonEditDice">Edit Dice</li>
+                <li id="buttonDeleteDice">Delete Dice</li>
+                <!--<li id="buttonDonate">Donate</li>-->
+            </ul>
+        </div>
         <div id="diceDeck" class="dice-deck">
 
             <!-- example dice removed before deployment. Styling purposes only. Dice should only be generated using JS
@@ -43,7 +50,7 @@
 
         </div><!-- End DICE DECK-->
     </section>
-    <div id="curtain" class="curtain hidden">
+    <div id="createDiceCurtain" class="curtain hidden">
         <div class="create-wrapper">
             <div class="text-right"><span id="buttonCancelDiceMenu" class="button-cancel-x">&#x1f5d9;</span></div>
             <div class="text-center title mb-16"><span>Create New Dice</span></div>
@@ -59,6 +66,9 @@
                 <button id="buttonNewDiceSubmit">Submit</button>
             </div>
         </div>
+    </div>
+    <div id = "specialEvent" class = "special-banner hidden">
+        <span id="special-banner-text">Error: not set</span><span id="closeSpBanner" class = "float-right close-specialbanner">close</span>
     </div>
 
     <script type="text/javascript" src="assets/javascript/index.js"></script>
