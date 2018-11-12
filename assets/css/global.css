@@ -6,6 +6,11 @@ html, body, section{
     width: 100%;
     font-family: Arial, Helvetica, sans-serif;
 }
+section{
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
 .title {
     font-size: 1.75rem;
 }
@@ -23,4 +28,21 @@ html, body, section{
 /* MARGIN -----------------------------*/
 .mb-16{
     margin-bottom: 16px;
+}
+.ml-auto{
+    margin-left: auto;
+}
+.mr-auto{
+    margin-right: auto;
+}
+.mb-auto{
+    margin: auto;
+}
+
+/*floats---------------------------------*/
+.float-right{
+    float: right;
+}
+.float-left{
+    float: left;
 }

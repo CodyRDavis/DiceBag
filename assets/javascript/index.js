@@ -10,7 +10,7 @@ if (diceArray === null) {
 
 //Button Listeners
 document.getElementById("buttonCreateDiceMenu").addEventListener('click', function(event){
-    document.getElementById("curtain").classList.toggle('hidden');
+    document.getElementById("createDiceCurtain").classList.toggle('hidden');
 });
 
 document.getElementById("buttonNewDiceSubmit").addEventListener('click', function(event){
@@ -41,6 +41,37 @@ document.getElementById("buttonCancelDiceMenu").addEventListener('click', functi
 
     clearDiceCreateMenu();
 });
+
+document.getElementById("closeSpBanner").addEventListener('click', function (event){
+    menuState="roll";
+});
+document.getElementById("dropDownMenu").addEventListener('click', function(event){
+    console.log("slide menu toggle");
+    document.getElementById('slideMenu').classList.toggle('slide-hide');
+});
+document.getElementById("buttonDeleteDice").addEventListener('click', function(event){
+    console.log("Delete Dice");
+    menuState="delete"; //clicks are now going to delete dice rather than roll
+
+    //hiding and unhiding ui elements to not distract the user or end up with weird results.
+    document.getElementById('nav').classList.toggle('hidden');
+    document.getElementById('specialEvent').classList.toggle('hidden');
+    document.getElementById('slideMenu').classList.toggle('slide-hide');
+
+    //updating special Event menu for text specific to this event
+    document.getElementById('special-banner-text').textContent = "Click a Dice to Delete";
+});
+
+document.getElementById("closeSpBanner").addEventListener('click', function(event){
+
+    //changing menuState so that clicks now roll
+    menuState = "roll"
+    //hiding the special event pop-up and bringing back the nav bar.
+    document.getElementById('nav').classList.toggle('hidden');
+    document.getElementById('specialEvent').classList.toggle('hidden');
+});
+
+// Functions ************************************************************************************************************
 
 function renderDice(){
 
@@ -107,7 +138,7 @@ function renderDice(){
 
 function clearDiceCreateMenu(){
     //closing the curtain and clearing out any inputs the user may have given
-    document.getElementById('curtain').classList.toggle('hidden');
+    document.getElementById('createDiceCurtain').classList.toggle('hidden');
     document.getElementById('inputName').value = "";
     document.getElementById('inputRolls').value = "";
     document.getElementById('inputSides').value = "";
@@ -148,4 +179,6 @@ function removeDice(id){
     console.log("remove: " + id);
     diceArray.splice(id,1);
     renderDice();
+    localStorage.clear; //ensureing local storage only contains the new array
+    localStorage.savedDice = JSON.stringify(diceArray);
 }
